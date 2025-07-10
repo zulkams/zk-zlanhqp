@@ -7,6 +7,9 @@ class AppFooter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text("Powered by Setlary MY", style: TextStyle(color: fontGrey, fontSize: 10));
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 12.0),
+      child: Text("Powered by Setlary MY", style: TextStyle(color: fontGrey, fontSize: 10)),
+    );
   }
 }

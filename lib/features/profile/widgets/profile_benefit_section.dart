@@ -149,7 +149,11 @@ class _TipsBanner extends StatelessWidget {
       child: const Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12),
         child: Center(
-          child: Text("Tips: Guarantee winner among you and your colleagues.", style: TextStyle(fontSize: 12, color: fontGrey)),
+          child: Text(
+            "Tips: Guarantee winner among you and your colleagues.",
+            style: TextStyle(fontSize: 12, color: fontGrey),
+            textAlign: TextAlign.center,
+          ),
         ),
       ),
     );
