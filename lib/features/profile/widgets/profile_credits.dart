@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:setgaji/core/constants/app_colors.dart';
+import 'package:setgaji/core/utils/price_util.dart';
 import 'package:setgaji/features/profile/providers/credit_visibility_provider.dart';
 
 /// profile credits
@@ -37,7 +38,7 @@ class ProfileCredits extends StatelessWidget {
                         style: TextStyle(color: fontYellow, fontWeight: FontWeight.bold),
                       ),
                       Text(
-                        isHidden ? "*****" : "50.00",
+                        isHidden ? "*****" : 50.00.formatPrice,
                         style: TextStyle(color: fontYellow, fontWeight: FontWeight.bold),
                       ),
                     ],
@@ -59,7 +60,7 @@ class ProfileCredits extends StatelessWidget {
                             style: TextStyle(color: fontYellow, fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            isHidden ? "*****" : "50.00",
+                            isHidden ? "*****" : 50.00.formatPrice,
                             style: TextStyle(color: fontYellow, fontWeight: FontWeight.bold),
                           ),
                         ],

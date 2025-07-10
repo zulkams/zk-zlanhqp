@@ -1,0 +1,81 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:hugeicons/hugeicons.dart';
+import 'package:setgaji/core/constants/app_colors.dart';
+import 'package:setgaji/core/widgets/app_dropdown_leading.dart';
+import 'package:setgaji/core/widgets/app_icon_button.dart';
+import 'package:setgaji/core/widgets/custom_inverted_radius.dart';
+
+/// custom gray appbar
+class AppGrayAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const AppGrayAppBar({super.key, required this.title});
+  final String title;
+
+  void _onButtonPressed() {
+    HapticFeedback.lightImpact();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      titleSpacing: 0,
+      centerTitle: true,
+      title: Column(
+        children: [
+          Text(
+            title,
+            style: const TextStyle(color: fontBlack, fontSize: 18, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 5),
+          _TripleDots(),
+        ],
+      ),
+      leading: AppDropdownLeading(),
+      leadingWidth: 100,
+      actions: [
+        AppIconButton(icon: HugeIcons.strokeRoundedNotification01, onPressed: _onButtonPressed, borderless: true, buttonSize: 50),
+        const SizedBox(width: 5),
+        AppIconButton(icon: HugeIcons.strokeRoundedGift, onPressed: _onButtonPressed, borderless: true, buttonSize: 50, badgeCount: 3),
+      ],
+      actionsPadding: EdgeInsets.only(right: 18),
+      backgroundColor: quaternaryColor,
+      surfaceTintColor: Colors.transparent,
+      toolbarHeight: 100,
+      shape: CustomInvertedRadius(),
+    );
+  }
+
+  @override
+  Size get preferredSize => const Size.fromHeight(100);
+}
+
+class _TripleDots extends StatelessWidget {
+  const _TripleDots();
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 28,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Container(
+            width: 7,
+            height: 7,
+            decoration: const BoxDecoration(color: fontGreyLight, shape: BoxShape.circle),
+          ),
+          Container(
+            width: 7,
+            height: 7,
+            decoration: const BoxDecoration(color: fontJadeGreen, shape: BoxShape.circle),
+          ),
+          Container(
+            width: 7,
+            height: 7,
+            decoration: const BoxDecoration(color: fontGreyLight, shape: BoxShape.circle),
+          ),
+        ],
+      ),
+    );
+  }
+}
