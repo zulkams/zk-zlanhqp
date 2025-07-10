@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:setgaji/core/constants/app_colors.dart';
 
-/// reusable pill jade container
+// reusable pill jade container
 class AppPill extends StatelessWidget {
   const AppPill({super.key, required this.child, this.horizontalPadding = 12, this.verticalPadding = 5});
   final Widget child;

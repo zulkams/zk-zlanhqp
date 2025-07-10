@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:setgaji/core/constants/app_colors.dart';
 
-/// non expandable list (navigation?)
+// non expandable list (navigation?)
 class NormalList extends StatelessWidget {
   final String title;
   final Widget? trailing;

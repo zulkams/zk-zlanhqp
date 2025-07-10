@@ -11,7 +11,7 @@ class ExpandableListProvider extends ChangeNotifier {
   }
 }
 
-/// expandable list
+// expandable list
 class ExpandableList extends StatefulWidget {
   final String title;
   final Widget? trailing;

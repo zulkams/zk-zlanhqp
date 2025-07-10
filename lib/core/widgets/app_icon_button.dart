@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:setgaji/core/constants/app_colors.dart';
 
-/// custom icon button
+// custom icon button
 class AppIconButton extends StatelessWidget {
   const AppIconButton({super.key, required this.icon, required this.onPressed, this.borderless = false, this.buttonSize = 56, this.iconSize = 24, this.badgeCount});
   final IconData icon;

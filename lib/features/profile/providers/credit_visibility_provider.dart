@@ -4,7 +4,7 @@ class CreditVisibilityProvider extends ChangeNotifier {
   bool _isHidden = true;
   bool get isHidden => _isHidden;
 
-  /// toggle credit visibility
+  // toggle credit visibility
   void toggle() {
     _isHidden = !_isHidden;
     notifyListeners();

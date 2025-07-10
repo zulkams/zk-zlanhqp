@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// for custom inverted radius
+// for custom inverted radius
 class CustomInvertedRadius extends OutlinedBorder {
   const CustomInvertedRadius({this.radius = 40});
   final double radius;

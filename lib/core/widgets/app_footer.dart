@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:setgaji/core/constants/app_colors.dart';
 
-/// reusable footer
+// reusable footer
 class AppFooter extends StatelessWidget {
   const AppFooter({super.key});
 

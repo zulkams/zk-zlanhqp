@@ -6,7 +6,7 @@ import 'package:setgaji/core/widgets/app_dropdown_leading.dart';
 import 'package:setgaji/core/widgets/app_icon_button.dart';
 import 'package:setgaji/core/widgets/custom_inverted_radius.dart';
 
-/// custom gray appbar
+// custom gray appbar
 class AppGrayAppBar extends StatelessWidget implements PreferredSizeWidget {
   const AppGrayAppBar({super.key, required this.title});
   final String title;

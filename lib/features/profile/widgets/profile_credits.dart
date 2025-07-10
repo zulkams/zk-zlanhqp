@@ -5,7 +5,7 @@ import 'package:setgaji/core/constants/app_colors.dart';
 import 'package:setgaji/core/utils/price_util.dart';
 import 'package:setgaji/features/profile/providers/credit_visibility_provider.dart';
 
-/// profile credits
+// profile credits
 class ProfileCredits extends StatelessWidget {
   const ProfileCredits({super.key});
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:setgaji/core/constants/app_colors.dart';
 
-/// custom leading widget fr appbar
+// custom leading widget fr appbar
 class AppDropdownLeading extends StatelessWidget {
   const AppDropdownLeading({super.key});
 
