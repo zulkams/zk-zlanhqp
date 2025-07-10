@@ -70,7 +70,7 @@ class ProfileCredits extends StatelessWidget {
                     builder: (context, provider, _) => IconButton(
                       icon: Icon(provider.isHidden ? Icons.visibility_off_outlined : Icons.visibility_outlined, color: fontWhiteFaded),
                       onPressed: () {
-                        HapticFeedback.mediumImpact();
+                        HapticFeedback.lightImpact();
                         provider.toggle();
                       },
                     ),

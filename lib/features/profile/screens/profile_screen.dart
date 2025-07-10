@@ -32,7 +32,7 @@ class ProfileScreen extends StatelessWidget {
                       children: [
                         ProfileHeaderSection(), // blue
                         ProfileDetailSection(), // profile info
-                        const SizedBox(height: 8),
+                        const SizedBox(height: 15),
                         const Divider(height: 0, thickness: 5, color: dividerColor),
                         ProfileBenefitSection(), // plan, benefits
                       ],

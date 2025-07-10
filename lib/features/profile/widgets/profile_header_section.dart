@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:go_router/go_router.dart';
 import 'package:setgaji/core/constants/app_colors.dart';
 import 'package:setgaji/core/widgets/app_pill.dart';
-import 'package:setgaji/core/utils/custom_inverted_radius.dart';
+import 'package:setgaji/core/widgets/custom_inverted_radius.dart';
 import 'package:setgaji/features/profile/widgets/profile_credits.dart';
 
 class ProfileHeaderSection extends StatelessWidget {
@@ -23,17 +25,7 @@ class ProfileHeaderSection extends StatelessWidget {
     return Center(
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 24.0, right: 24.0, top: 12, bottom: 0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                // TODO: change icon later
-                Icon(Icons.close_rounded, color: fontWhite, size: 30),
-                Icon(Icons.settings_rounded, color: fontWhite, size: 30),
-              ],
-            ),
-          ),
+          buildTopSection(context),
           // TODO: change to image
           Icon(Icons.star, color: fontWhite, size: 50),
           const SizedBox(height: 5),
@@ -48,6 +40,26 @@ class ProfileHeaderSection extends StatelessWidget {
           const SizedBox(height: 20),
           const ProfileCredits(),
           const SizedBox(height: 32),
+        ],
+      ),
+    );
+  }
+
+  Widget buildTopSection(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 24.0, right: 24.0, top: 12, bottom: 0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          // TODO: change icon later
+          IconButton(
+            onPressed: () {
+              HapticFeedback.lightImpact();
+              context.pop();
+            },
+            icon: Icon(Icons.close_rounded, color: fontWhite, size: 30),
+          ),
+          Icon(Icons.settings_rounded, color: fontWhite, size: 30),
         ],
       ),
     );

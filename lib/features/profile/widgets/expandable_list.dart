@@ -48,13 +48,13 @@ class _ExpandableListState extends State<ExpandableList> with SingleTickerProvid
           // Animate chevron
           provider.expanded ? _controller.forward() : _controller.reverse();
           return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12),
+            padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 5),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 InkWell(
                   onTap: () {
-                    HapticFeedback.mediumImpact();
+                    HapticFeedback.lightImpact();
                     provider.toggle();
                   },
                   child: Row(
