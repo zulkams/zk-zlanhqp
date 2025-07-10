@@ -4,7 +4,7 @@ import 'package:setgaji/features/home/screens/home_screen.dart';
 import 'package:setgaji/features/profile/screens/profile_screen.dart';
 
 final GoRouter appRouter = GoRouter(
-  initialLocation: '/claim',
+  initialLocation: '/',
   routes: [
     GoRoute(path: '/', name: 'home', builder: (context, state) => const HomeScreen()),
     GoRoute(path: '/profile', name: 'profile', builder: (context, state) => const ProfileScreen()),

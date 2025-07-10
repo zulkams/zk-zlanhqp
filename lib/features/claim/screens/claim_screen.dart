@@ -36,7 +36,7 @@ class _ClaimScreenContent extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [SizedBox(height: 12), _ClaimScreenTitle(), SizedBox(height: 12), ClaimCategory(), SizedBox(height: 12), ClaimRecent(), SizedBox(height: 28), _ClaimScreenBottomArea()],
+          children: const [SizedBox(height: 24), _ClaimScreenTitle(), SizedBox(height: 32), ClaimCategory(), SizedBox(height: 5), ClaimRecent(), SizedBox(height: 28), _ClaimScreenBottomArea()],
         ),
       ),
     );

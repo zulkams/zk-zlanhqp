@@ -7,31 +7,27 @@ class ProfileDetailSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(color: backgroundWhite, child: buildProfileList());
-  }
-
-  Widget buildProfileList() {
-    return Column(
-      children: [
-        const ExpandableList(
-          title: "My Profile",
-          trailing: Text(
-            "KYC Verified",
-            style: TextStyle(color: fontJadeGreen, fontWeight: FontWeight.bold),
+    return Container(
+      color: backgroundWhite,
+      child: const Column(
+        children: [
+          ExpandableList(
+            title: "My Profile",
+            trailing: Text(
+              "KYC Verified",
+              style: TextStyle(color: fontJadeGreen, fontWeight: FontWeight.bold, fontSize: 12),
+            ),
           ),
-          children: [],
-        ),
-        // horizontal line
-        const Divider(height: 20, thickness: 1, color: dividerColor),
-        const ExpandableList(
-          title: "Company Profile",
-          trailing: Text(
-            "Active",
-            style: TextStyle(color: fontJadeGreen, fontWeight: FontWeight.bold),
+          Divider(height: 20, thickness: 1, color: dividerColor),
+          ExpandableList(
+            title: "Company Profile",
+            trailing: Text(
+              "Active",
+              style: TextStyle(color: fontJadeGreen, fontWeight: FontWeight.bold, fontSize: 12),
+            ),
           ),
-          children: [],
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

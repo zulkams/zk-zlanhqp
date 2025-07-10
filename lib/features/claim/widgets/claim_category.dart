@@ -51,7 +51,7 @@ class _ClaimCategoryItem extends StatelessWidget {
       child: Container(
         alignment: Alignment.center,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SizedBox(
               height: 80,
@@ -69,14 +69,12 @@ class _ClaimCategoryItem extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 5),
-            Center(
-              child: Text(
-                category.label,
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 12, color: isSelected ? primaryColor : fontGrey, fontWeight: FontWeight.w600),
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-              ),
+            Text(
+              category.label,
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 12, color: isSelected ? primaryColor : fontGrey, fontWeight: FontWeight.w600),
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
             ),
           ],
         ),

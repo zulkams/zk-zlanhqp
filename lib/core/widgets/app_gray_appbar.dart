@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:setgaji/core/constants/app_colors.dart';
-import 'package:setgaji/core/widgets/app_dropdown_leading.dart';
 import 'package:setgaji/core/widgets/app_icon_button.dart';
 import 'package:setgaji/core/widgets/custom_inverted_radius.dart';
 
@@ -30,7 +29,7 @@ class AppGrayAppBar extends StatelessWidget implements PreferredSizeWidget {
           _TripleDots(),
         ],
       ),
-      leading: AppDropdownLeading(),
+      leading: _AppDropdownLeading(),
       leadingWidth: 100,
       actions: [
         AppIconButton(icon: HugeIcons.strokeRoundedNotification01, onPressed: _onButtonPressed, borderless: true, buttonSize: 50),
@@ -47,6 +46,33 @@ class AppGrayAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Size get preferredSize => const Size.fromHeight(100);
+}
+
+class _AppDropdownLeading extends StatelessWidget {
+  const _AppDropdownLeading();
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 20.0),
+      child: Row(
+        children: [
+          Container(
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(
+              color: backgroundWhite,
+              shape: BoxShape.circle,
+              border: Border.all(color: dividerColor, width: 1),
+            ),
+            alignment: Alignment.center,
+            child: Image.asset("assets/images/company_logo.png", height: 40),
+          ),
+          Icon(HugeIcons.strokeRoundedArrowDown01, size: 18),
+        ],
+      ),
+    );
+  }
 }
 
 class _TripleDots extends StatelessWidget {
