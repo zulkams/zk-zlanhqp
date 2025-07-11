@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:provider/provider.dart';
 import 'package:setgaji/core/constants/app_colors.dart';
+import 'package:setgaji/core/utils/profile_data_util.dart';
 import 'package:setgaji/core/widgets/app_pill.dart';
 import 'package:setgaji/core/widgets/custom_inverted_radius.dart';
+import 'package:setgaji/features/profile/providers/user_profile_provider.dart';
 import 'package:setgaji/features/profile/widgets/profile_credits.dart';
 
 class ProfileHeaderSection extends StatelessWidget {
@@ -66,16 +69,17 @@ class _ProfileInfoSection extends StatelessWidget {
   const _ProfileInfoSection();
   @override
   Widget build(BuildContext context) {
+    final userProfile = context.read<UserProfileProvider>().userProfile;
     return Column(
       children: [
-        Image.asset("assets/images/core_logo.png", height: 60),
+        Image.asset("assets/images/${userProfile.profilePlan.profilePlanIcon}", height: 60),
         SizedBox(height: 5),
         Text(
-          "Zulkamal",
+          userProfile.name,
           style: TextStyle(color: fontWhite, fontSize: 20, fontWeight: FontWeight.bold),
         ),
         Text(
-          "Malaysia Company Sdn Bhd",
+          userProfile.company,
           style: TextStyle(color: fontWhiteFaded, fontSize: 14, fontWeight: FontWeight.w300),
         ),
       ],
@@ -87,15 +91,17 @@ class _KYCBadge extends StatelessWidget {
   const _KYCBadge();
   @override
   Widget build(BuildContext context) {
+    final userProfile = context.read<UserProfileProvider>().userProfile;
     return AppPill(
+      color: userProfile.kycStatus.kycStatus == KYCStatus.verified ? jadeGreen : badgeColor,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         mainAxisSize: MainAxisSize.min,
-        children: const [
+        children: [
           Icon(HugeIcons.strokeRoundedKnightShield, color: fontWhite, size: 14),
           SizedBox(width: 5),
           Text(
-            "KYC Verified",
+            "KYC ${userProfile.kycStatus.kycStatusString}",
             style: TextStyle(color: fontWhite, fontSize: 10, fontWeight: FontWeight.w700),
           ),
         ],

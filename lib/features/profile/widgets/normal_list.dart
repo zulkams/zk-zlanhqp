@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:setgaji/core/constants/app_colors.dart';
 
@@ -6,16 +7,19 @@ import 'package:setgaji/core/constants/app_colors.dart';
 class NormalList extends StatelessWidget {
   final String title;
   final Widget? trailing;
-  final VoidCallback? onTap;
+  final Function onTap;
   final int? badgeCount;
-  const NormalList({super.key, required this.title, this.trailing, this.onTap, this.badgeCount});
+  const NormalList({super.key, required this.title, this.trailing, required this.onTap, this.badgeCount});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 6),
       child: InkWell(
-        onTap: null,
+        onTap: () {
+          HapticFeedback.lightImpact();
+          onTap();
+        },
         splashColor: Colors.transparent,
         highlightColor: Colors.transparent,
         child: Row(

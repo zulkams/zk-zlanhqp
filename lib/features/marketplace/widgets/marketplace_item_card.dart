@@ -4,6 +4,7 @@ import 'package:hugeicons/hugeicons.dart';
 import 'package:provider/provider.dart';
 import 'package:setgaji/core/constants/app_colors.dart';
 import 'package:setgaji/core/utils/datetime_util.dart';
+import 'package:setgaji/core/utils/profile_data_util.dart';
 import 'package:setgaji/core/widgets/app_pill.dart';
 import 'package:setgaji/features/marketplace/models/marketplace_item_model.dart';
 import 'package:setgaji/features/marketplace/providers/marketplace_provider.dart';
@@ -45,7 +46,7 @@ class _MarketplaceItemCardState extends State<MarketplaceItemCard> {
               children: [
                 Padding(
                   padding: EdgeInsets.all(8.0),
-                  child: Center(child: Image.asset("assets/images/core_logo.png", height: 60)),
+                  child: Center(child: Image.asset("assets/images/${item.imageUrl}.png", height: 60, width: 60, fit: BoxFit.cover)),
                 ),
                 //vertical divider
                 VerticalDivider(width: 10, color: dividerColor),
@@ -86,7 +87,7 @@ class _MarketplaceItemCardState extends State<MarketplaceItemCard> {
                                 ),
                                 Row(
                                   children: [
-                                    if (item.planType == 1) ...[Image.asset("assets/images/core_logo.png", height: 20)] else const SizedBox(width: 20),
+                                    if (item.planType == 1) ...[Image.asset("assets/images/${item.planType.profilePlanIcon}", height: 20)] else const SizedBox(width: 20),
                                     const SizedBox(width: 10),
                                     if (item.stockLeft > 0) ...[
                                       SizedBox(

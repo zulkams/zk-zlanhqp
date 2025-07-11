@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'package:setgaji/core/constants/app_colors.dart';
+import 'package:setgaji/core/utils/profile_data_util.dart';
 import 'package:setgaji/core/widgets/app_pill.dart';
 import 'package:setgaji/features/profile/models/member_benefits_model.dart';
+import 'package:setgaji/features/profile/providers/user_profile_provider.dart';
 import 'package:setgaji/features/profile/widgets/normal_list.dart';
 
 class ProfileBenefitSection extends StatelessWidget {
@@ -21,13 +23,14 @@ class _SectionHeader extends StatelessWidget {
   const _SectionHeader();
   @override
   Widget build(BuildContext context) {
+    final userProfile = context.read<UserProfileProvider>().userProfile;
     return Padding(
       padding: const EdgeInsets.only(left: 24.0, right: 24.0, top: 12.0, bottom: 0.0),
       child: Row(
         children: [
-          Image.asset("assets/images/core_logo.png", height: 20),
+          Image.asset("assets/images/${userProfile.profilePlan.profilePlanIcon}", height: 20),
           SizedBox(width: 8),
-          Text("Core Plan's Benefit", style: TextStyle(fontSize: 14, color: fontGrey)),
+          Text("${userProfile.profilePlan.profilePlanString} Plan's Benefit", style: TextStyle(fontSize: 14, color: fontGrey)),
         ],
       ),
     );
@@ -37,12 +40,9 @@ class _SectionHeader extends StatelessWidget {
 class _PlanBenefitList extends StatelessWidget {
   const _PlanBenefitList();
 
-  void _onTap() {
-    HapticFeedback.lightImpact();
-  }
-
   @override
   Widget build(BuildContext context) {
+    final userProfile = context.read<UserProfileProvider>().userProfile;
     return Column(
       children: [
         NormalList(
@@ -53,17 +53,17 @@ class _PlanBenefitList extends StatelessWidget {
               style: TextStyle(color: fontWhite, fontWeight: FontWeight.bold, fontSize: 12),
             ),
           ),
-          onTap: _onTap,
+          onTap: () {},
         ),
         Divider(height: 20, thickness: 1, color: dividerColor),
         NormalList(
           title: "My Rewards",
           trailing: Text(
-            "Basic",
+            userProfile.myRewards.rewardTier.rewardTierString,
             style: TextStyle(color: fontGrey, fontWeight: FontWeight.bold, fontSize: 12),
           ),
-          badgeCount: 3,
-          onTap: _onTap,
+          badgeCount: userProfile.myRewards.rewardCount,
+          onTap: () {},
         ),
         Divider(height: 20, thickness: 1, color: dividerColor),
       ],

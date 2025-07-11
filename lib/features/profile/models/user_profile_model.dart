@@ -1,6 +1,7 @@
 class UserProfileModel {
   final String name;
   final String company;
+  final String companyLogo;
   final int kycStatus;
   final double remainingCredit;
   final double creditLimit;
@@ -12,6 +13,7 @@ class UserProfileModel {
   UserProfileModel({
     required this.name,
     required this.company,
+    required this.companyLogo,
     required this.kycStatus,
     required this.remainingCredit,
     required this.creditLimit,
@@ -23,6 +25,7 @@ class UserProfileModel {
   factory UserProfileModel.fromJson(Map<String, dynamic> json) => UserProfileModel(
     name: json["name"],
     company: json["company"],
+    companyLogo: json["companyLogo"],
     kycStatus: json["kycStatus"],
     remainingCredit: json["remainingCredit"],
     creditLimit: json["creditLimit"],
@@ -34,6 +37,7 @@ class UserProfileModel {
   static const userProfileJson = {
     "name": "Zulkamal",
     "company": "Malaysia Company Sdn Bhd",
+    "companyLogo": "company_logo.png",
     "kycStatus": 1,
     "remainingCredit": 50.00,
     "creditLimit": 50.00,

@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:setgaji/core/constants/app_colors.dart';
 import 'package:setgaji/core/widgets/app_footer.dart';
 import 'package:setgaji/features/profile/providers/credit_visibility_provider.dart';
+import 'package:setgaji/features/profile/providers/user_profile_provider.dart';
 import 'package:setgaji/features/profile/widgets/profile_benefit_section.dart';
 import 'package:setgaji/features/profile/widgets/profile_detail_section.dart';
 import 'package:setgaji/features/profile/widgets/profile_header_section.dart';
@@ -12,8 +13,11 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => CreditVisibilityProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => CreditVisibilityProvider()),
+        ChangeNotifierProvider(create: (_) => UserProfileProvider()),
+      ],
       child: Scaffold(
         appBar: AppBar(backgroundColor: primaryColor, elevation: 0, toolbarHeight: 0),
         body: SafeArea(
