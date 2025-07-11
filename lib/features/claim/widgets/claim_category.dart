@@ -19,7 +19,7 @@ class ClaimCategory extends StatelessWidget {
           width: double.infinity,
           child: GridView.builder(
             shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
+            physics: NeverScrollableScrollPhysics(),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, childAspectRatio: 0.8, mainAxisSpacing: 1, crossAxisSpacing: 1),
             itemCount: categories.length,
             itemBuilder: (context, index) => Selector<ClaimCategoryProvider, int?>(
@@ -97,8 +97,8 @@ class _SelectedTick extends StatelessWidget {
       child: Container(
         height: 20,
         width: 20,
-        decoration: const BoxDecoration(color: jadeGreen, shape: BoxShape.circle),
-        child: const HugeIcon(icon: HugeIcons.strokeRoundedTick02, color: fontWhite, size: 15),
+        decoration: BoxDecoration(color: jadeGreen, shape: BoxShape.circle),
+        child: Icon(HugeIcons.strokeRoundedTick02, color: fontWhite, size: 15),
       ),
     );
   }

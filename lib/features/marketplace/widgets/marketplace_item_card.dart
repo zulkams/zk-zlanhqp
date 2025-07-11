@@ -4,6 +4,7 @@ import 'package:hugeicons/hugeicons.dart';
 import 'package:provider/provider.dart';
 import 'package:setgaji/core/constants/app_colors.dart';
 import 'package:setgaji/core/utils/datetime_util.dart';
+import 'package:setgaji/core/utils/profile_data_util.dart';
 import 'package:setgaji/core/widgets/app_pill.dart';
 import 'package:setgaji/features/marketplace/models/marketplace_item_model.dart';
 import 'package:setgaji/features/marketplace/providers/marketplace_provider.dart';
@@ -36,7 +37,7 @@ class _MarketplaceItemCardState extends State<MarketplaceItemCard> {
           border: item.isSelected ? Border.all(color: jadeGreen, width: 2) : Border.all(color: dividerColor),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+          padding: EdgeInsets.symmetric(horizontal: 10.0),
           child: Opacity(
             opacity: item.stockLeft == 0 ? 0.5 : 1,
             child: Row(
@@ -44,15 +45,15 @@ class _MarketplaceItemCardState extends State<MarketplaceItemCard> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Center(child: Image.asset("assets/images/core_logo.png", height: 60)),
+                  padding: EdgeInsets.all(8.0),
+                  child: Center(child: Image.asset("assets/images/${item.imageUrl}.png", height: 60, width: 60, fit: BoxFit.cover)),
                 ),
                 //vertical divider
                 VerticalDivider(width: 10, color: dividerColor),
                 //content
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10.0),
+                    padding: EdgeInsets.symmetric(vertical: 10.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -67,7 +68,7 @@ class _MarketplaceItemCardState extends State<MarketplaceItemCard> {
                                 Align(
                                   alignment: Alignment.centerLeft,
                                   child: ConstrainedBox(
-                                    constraints: const BoxConstraints(minWidth: 60),
+                                    constraints: BoxConstraints(minWidth: 60),
                                     child: AppPill(
                                       horizontalPadding: 8,
                                       color: item.stockLeft == 0 ? fontGrey : jadeGreen,
@@ -76,9 +77,9 @@ class _MarketplaceItemCardState extends State<MarketplaceItemCard> {
                                         children: [
                                           Text(
                                             '${item.stockLeft}/${item.stockTotal} left',
-                                            style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 10),
+                                            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 10),
                                           ),
-                                          if (item.stockLeft == 0) ...[SizedBox(width: 5), Icon(HugeIcons.strokeRoundedHelpCircle, color: Colors.white, size: 14)],
+                                          if (item.stockLeft == 0) ...[const SizedBox(width: 5), const Icon(HugeIcons.strokeRoundedHelpCircle, color: Colors.white, size: 14)],
                                         ],
                                       ),
                                     ),
@@ -86,7 +87,7 @@ class _MarketplaceItemCardState extends State<MarketplaceItemCard> {
                                 ),
                                 Row(
                                   children: [
-                                    if (item.planType == 1) ...[Image.asset("assets/images/core_logo.png", height: 20)] else const SizedBox(width: 20),
+                                    if (item.planType == 1) ...[Image.asset("assets/images/${item.planType.profilePlanIcon}", height: 20)] else const SizedBox(width: 20),
                                     const SizedBox(width: 10),
                                     if (item.stockLeft > 0) ...[
                                       SizedBox(
@@ -105,10 +106,10 @@ class _MarketplaceItemCardState extends State<MarketplaceItemCard> {
                                 ),
                               ],
                             ),
-                            const SizedBox(height: 5),
+                            SizedBox(height: 5),
                             SizedBox(
                               width: MediaQuery.of(context).size.width * 0.4,
-                              child: Text(item.name, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16), maxLines: 2),
+                              child: Text(item.name, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16), maxLines: 2),
                             ),
                           ],
                         ),
@@ -121,18 +122,18 @@ class _MarketplaceItemCardState extends State<MarketplaceItemCard> {
                                 children: [
                                   Text(
                                     "RM",
-                                    style: const TextStyle(color: jadeGreen, fontWeight: FontWeight.bold, fontSize: 14),
+                                    style: TextStyle(color: jadeGreen, fontWeight: FontWeight.bold, fontSize: 14),
                                   ),
                                   Text(
                                     item.price.toStringAsFixed(2),
-                                    style: const TextStyle(color: jadeGreen, fontWeight: FontWeight.bold, fontSize: 22),
+                                    style: TextStyle(color: jadeGreen, fontWeight: FontWeight.bold, fontSize: 22),
                                   ),
                                 ],
                               ),
-                              const SizedBox(width: 8),
+                              SizedBox(width: 8),
                               Text(
                                 'RM${item.maxPrice.toStringAsFixed(2)}',
-                                style: const TextStyle(color: fontGrey, fontSize: 12, decoration: TextDecoration.lineThrough),
+                                style: TextStyle(color: fontGrey, fontSize: 12, decoration: TextDecoration.lineThrough),
                               ),
                             ],
                           ),

@@ -1,24 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:setgaji/core/constants/app_colors.dart';
 import 'package:setgaji/core/utils/price_util.dart';
+import 'package:setgaji/core/utils/profile_data_util.dart';
 import 'package:setgaji/core/widgets/app_bottom_buttons.dart';
 import 'package:setgaji/core/widgets/app_footer.dart';
 import 'package:setgaji/core/widgets/app_gray_appbar.dart';
 import 'package:setgaji/features/marketplace/providers/marketplace_provider.dart';
 import 'package:setgaji/features/marketplace/widgets/marketplace_item_list.dart';
+import 'package:setgaji/features/profile/providers/user_profile_provider.dart';
 
 class MarketplaceScreen extends StatelessWidget {
   const MarketplaceScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppGrayAppBar(title: 'Marketplace'),
-      body: ChangeNotifierProvider(
-        create: (_) => MarketplaceProvider(),
-        child: SafeArea(child: _MarketplaceScreenContent()),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => MarketplaceProvider()),
+        ChangeNotifierProvider(create: (_) => UserProfileProvider()),
+      ],
+      child: Scaffold(
+        appBar: AppGrayAppBar(title: 'Marketplace'),
+        body: SafeArea(child: _MarketplaceScreenContent()),
       ),
     );
   }
@@ -51,21 +55,22 @@ class _MarketplaceScreenSubs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userProfile = context.read<UserProfileProvider>().userProfile;
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+      padding: EdgeInsets.symmetric(horizontal: 24.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
             children: [
-              Image.asset("assets/images/core_logo.png", height: 20),
+              Image.asset("assets/images/${userProfile.profilePlan.profilePlanIcon}", height: 20),
               SizedBox(width: 12),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text("Your Subscription", style: TextStyle(fontSize: 14, color: fontGrey)),
                   Text(
-                    "Core Plan",
+                    "${userProfile.profilePlan.profilePlanString} Plan",
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: fontBlack),
                   ),
                 ],
@@ -77,7 +82,7 @@ class _MarketplaceScreenSubs extends StatelessWidget {
             children: [
               Text("Usable Credit", style: TextStyle(fontSize: 14, color: fontGrey)),
               Text(
-                80.00.formatPrice,
+                userProfile.remainingCredit.formatPrice,
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: fontBlack),
               ),
             ],
@@ -91,10 +96,6 @@ class _MarketplaceScreenSubs extends StatelessWidget {
 class _MarketplaceScreenBottomArea extends StatelessWidget {
   const _MarketplaceScreenBottomArea();
 
-  void _onRedeemPressed() {
-    HapticFeedback.lightImpact();
-  }
-
   bool _isRedeemButtonDisabled(BuildContext context) {
     final selectedIndex = context.watch<MarketplaceProvider>().items.where((item) => item.isSelected).isEmpty;
     return selectedIndex;
@@ -103,11 +104,11 @@ class _MarketplaceScreenBottomArea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+      padding: EdgeInsets.symmetric(horizontal: 24.0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          AppBottomButtons(middleButtonTitle: 'Redeem', onMiddleButtonPressed: _onRedeemPressed, disabled: _isRedeemButtonDisabled(context)),
+          AppBottomButtons(middleButtonTitle: 'Redeem', onMiddleButtonPressed: () {}, disabled: _isRedeemButtonDisabled(context)),
           SizedBox(height: 16),
           AppFooter(),
         ],

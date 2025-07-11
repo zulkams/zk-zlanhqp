@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:setgaji/core/constants/app_colors.dart';
+import 'package:setgaji/core/utils/claim_data_util.dart';
 import 'package:setgaji/core/utils/datetime_util.dart';
 import 'package:setgaji/core/utils/price_util.dart';
 import 'package:setgaji/features/claim/models/recent_claim_model.dart';
@@ -19,7 +20,7 @@ class ClaimRecent extends StatelessWidget {
         borderRadius: BorderRadius.circular(18),
         border: Border.all(color: dividerColor, width: 1),
       ),
-      child: const Padding(padding: EdgeInsets.all(12.0), child: _ClaimRecentContent()),
+      child: Padding(padding: EdgeInsets.all(12.0), child: _ClaimRecentContent()),
     );
   }
 }
@@ -35,11 +36,11 @@ class _ClaimRecentContent extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           'My Recent Claims',
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: fontBlack),
         ),
-        const SizedBox(height: 12),
+        SizedBox(height: 12),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -49,10 +50,10 @@ class _ClaimRecentContent extends StatelessWidget {
               children: [
                 Text(
                   recentClaim.label,
-                  style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: fontGreyDark),
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: fontGreyDark),
                 ),
-                const SizedBox(height: 3),
-                Text(recentClaim.date.formatDate, style: const TextStyle(fontSize: 14, color: fontGrey)),
+                SizedBox(height: 3),
+                Text(recentClaim.date.formatDate, style: TextStyle(fontSize: 14, color: fontGrey)),
               ],
             ),
             Column(
@@ -60,11 +61,11 @@ class _ClaimRecentContent extends StatelessWidget {
               children: [
                 Text(
                   recentClaim.amount.formatPrice,
-                  style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: fontBlack),
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: fontBlack),
                 ),
-                const SizedBox(height: 3),
+                SizedBox(height: 3),
                 Text(
-                  recentClaim.status,
+                  recentClaim.status.claimStatusString,
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: recentClaim.status.color),
                 ),
               ],

@@ -35,9 +35,9 @@ class MarketplaceItemModel {
   }
 
   static const marketplaceItemJson = [
-    {"imageUrl": "", "name": "Jasmine SunWhite 5KG Rice", "price": 35.00, "maxPrice": 38.00, "stockLeft": 90, "stockTotal": 100, "planType": 1, "expiryDate": "2025-06-10T00:00:00.000Z"},
-    {"imageUrl": "", "name": "Jasmine SunWhite 5KG Rice", "price": 35.00, "maxPrice": 38.00, "stockLeft": 90, "stockTotal": 100, "planType": 0, "expiryDate": "2025-07-11T00:00:00.000Z"},
-    {"imageUrl": "", "name": "Jasmine SunWhite 5KG Rice", "price": 35.00, "maxPrice": 38.00, "stockLeft": 0, "stockTotal": 100, "planType": 0, "expiryDate": "2025-07-11T00:00:00.000Z"},
+    {"imageUrl": "item_1", "name": "Jasmine SunWhite 5KG Rice", "price": 35.00, "maxPrice": 38.00, "stockLeft": 90, "stockTotal": 100, "planType": 1, "expiryDate": "2025-06-10T00:00:00.000Z"},
+    {"imageUrl": "item_2", "name": "Jasmine SunWhite 5KG Rice", "price": 35.00, "maxPrice": 38.00, "stockLeft": 90, "stockTotal": 100, "planType": 0, "expiryDate": "2025-07-11T00:00:00.000Z"},
+    {"imageUrl": "item_3", "name": "Jasmine SunWhite 5KG Rice", "price": 35.00, "maxPrice": 38.00, "stockLeft": 0, "stockTotal": 100, "planType": 0, "expiryDate": "2025-07-11T00:00:00.000Z"},
   ];
 
   static List<MarketplaceItemModel> get marketplaceItemList => marketplaceItemJson.map((json) => MarketplaceItemModel.fromJson(json)).toList();

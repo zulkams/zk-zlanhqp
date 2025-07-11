@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:provider/provider.dart';
 import 'package:setgaji/core/constants/app_colors.dart';
 import 'package:setgaji/core/widgets/app_icon_button.dart';
 import 'package:setgaji/core/widgets/custom_inverted_radius.dart';
+import 'package:setgaji/features/profile/providers/user_profile_provider.dart';
 
 // custom gray appbar
 class AppGrayAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -11,11 +13,12 @@ class AppGrayAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
 
   void _onButtonPressed() {
-    HapticFeedback.lightImpact();
+    //
   }
 
   @override
   Widget build(BuildContext context) {
+    final userProfile = context.read<UserProfileProvider>().userProfile;
     return AppBar(
       titleSpacing: 0,
       centerTitle: true,
@@ -34,7 +37,7 @@ class AppGrayAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         AppIconButton(icon: HugeIcons.strokeRoundedNotification01, onPressed: _onButtonPressed, borderless: true, buttonSize: 50),
         const SizedBox(width: 5),
-        AppIconButton(icon: HugeIcons.strokeRoundedGift, onPressed: _onButtonPressed, borderless: true, buttonSize: 50, badgeCount: 3),
+        AppIconButton(icon: HugeIcons.strokeRoundedGift, onPressed: _onButtonPressed, borderless: true, buttonSize: 50, badgeCount: userProfile.myRewards.rewardCount),
       ],
       actionsPadding: EdgeInsets.only(right: 18),
       backgroundColor: quaternaryColor,
@@ -57,6 +60,7 @@ class _AppDropdownLeading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userProfile = context.read<UserProfileProvider>().userProfile;
     return Padding(
       padding: const EdgeInsets.only(left: 20.0),
       child: InkWell(
@@ -74,7 +78,7 @@ class _AppDropdownLeading extends StatelessWidget {
                 border: Border.all(color: dividerColor, width: 1),
               ),
               alignment: Alignment.center,
-              child: Image.asset("assets/images/company_logo.png", height: 40),
+              child: Image.asset("assets/images/${userProfile.companyLogo}", height: 40),
             ),
             Icon(HugeIcons.strokeRoundedArrowDown01, size: 18),
           ],

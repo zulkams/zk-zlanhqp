@@ -4,6 +4,7 @@ import 'package:hugeicons/hugeicons.dart';
 import 'package:provider/provider.dart';
 import 'package:setgaji/core/constants/app_colors.dart';
 import 'package:setgaji/features/profile/providers/credit_visibility_provider.dart';
+import 'package:setgaji/features/profile/providers/user_profile_provider.dart';
 
 // profile credits
 class ProfileCredits extends StatelessWidget {
@@ -12,6 +13,7 @@ class ProfileCredits extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isHidden = context.watch<CreditVisibilityProvider>().isHidden;
+    final userProfile = context.read<UserProfileProvider>().userProfile;
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(color: tertiaryColor, borderRadius: BorderRadius.circular(10)),
@@ -38,7 +40,7 @@ class ProfileCredits extends StatelessWidget {
                         style: TextStyle(color: fontYellow, fontWeight: FontWeight.bold),
                       ),
                       Text(
-                        isHidden ? "*****" : "50.00",
+                        isHidden ? "*****" : userProfile.remainingCredit.toStringAsFixed(2),
                         style: TextStyle(color: fontYellow, fontWeight: FontWeight.bold),
                       ),
                     ],
@@ -63,7 +65,7 @@ class ProfileCredits extends StatelessWidget {
                             style: TextStyle(color: fontYellow, fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            isHidden ? "*****" : "50.00",
+                            isHidden ? "*****" : userProfile.creditLimit.toStringAsFixed(2),
                             style: TextStyle(color: fontYellow, fontWeight: FontWeight.bold),
                           ),
                         ],

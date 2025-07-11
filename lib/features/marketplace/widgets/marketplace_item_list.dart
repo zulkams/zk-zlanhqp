@@ -10,7 +10,7 @@ class MarketplaceItemList extends StatelessWidget {
   Widget build(BuildContext context) {
     final items = context.watch<MarketplaceProvider>().items;
     return ListView.separated(
-      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+      padding: EdgeInsets.symmetric(horizontal: 24.0),
       itemCount: items.length,
       separatorBuilder: (context, index) => const SizedBox(height: 16),
       itemBuilder: (context, index) {
