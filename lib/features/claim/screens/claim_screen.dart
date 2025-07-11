@@ -30,14 +30,21 @@ class _ClaimScreenContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      physics: const BouncingScrollPhysics(),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [SizedBox(height: 24), _ClaimScreenTitle(), SizedBox(height: 32), ClaimCategory(), SizedBox(height: 5), ClaimRecent(), SizedBox(height: 28), _ClaimScreenBottomArea()],
-        ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(height: 12),
+          const _ClaimScreenTitle(),
+          const SizedBox(height: 20),
+          Expanded(
+            child: SingleChildScrollView(physics: const BouncingScrollPhysics(), child: const ClaimCategory()),
+          ),
+          const ClaimRecent(),
+          const SizedBox(height: 20),
+          const _ClaimScreenBottomArea(),
+        ],
       ),
     );
   }
