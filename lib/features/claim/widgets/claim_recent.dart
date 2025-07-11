@@ -6,20 +6,20 @@ import 'package:setgaji/features/claim/models/recent_claim_model.dart';
 
 // recent claim
 class ClaimRecent extends StatelessWidget {
-  const ClaimRecent({super.key, RecentClaimModel? recent}) : recentClaim = recent ?? RecentClaimModel.recentClaim;
-  final RecentClaimModel recentClaim;
+  const ClaimRecent({super.key, this.recentClaim});
+  final RecentClaimModel? recentClaim;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 120,
+      height: 110,
       width: double.infinity,
       decoration: BoxDecoration(
         color: backgroundWhite,
         borderRadius: BorderRadius.circular(18),
         border: Border.all(color: dividerColor, width: 1),
       ),
-      child: const Padding(padding: EdgeInsets.all(16.0), child: _ClaimRecentContent()),
+      child: const Padding(padding: EdgeInsets.all(12.0), child: _ClaimRecentContent()),
     );
   }
 }
@@ -32,6 +32,7 @@ class _ClaimRecentContent extends StatelessWidget {
     final claimWidget = context.findAncestorWidgetOfExactType<ClaimRecent>();
     final recentClaim = claimWidget?.recentClaim ?? RecentClaimModel.recentClaim;
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(
