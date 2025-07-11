@@ -21,13 +21,17 @@ class HomeScreen extends StatelessWidget {
 
   Widget buildContent(BuildContext context) {
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          AppButton(label: "Profile Screen", onPressed: () => context.push(AppRoute.profileRoute)),
-          AppButton(label: "Marketplace Screen", onPressed: () => context.push(AppRoute.marketplaceRoute)),
-          AppButton(label: "Claim Screen", onPressed: () => context.push(AppRoute.claimRoute)),
-        ],
+      child: SizedBox(
+        width: double.infinity,
+        height: MediaQuery.of(context).size.height * 0.35,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            AppButton(label: "Profile Screen", onPressed: () => context.push(AppRoute.profileRoute)),
+            AppButton(label: "Marketplace Screen", onPressed: () => context.push(AppRoute.marketplaceRoute)),
+            AppButton(label: "Claim Screen", onPressed: () => context.push(AppRoute.claimRoute)),
+          ],
+        ),
       ),
     );
   }
