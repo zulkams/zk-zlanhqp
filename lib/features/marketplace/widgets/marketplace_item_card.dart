@@ -20,12 +20,14 @@ class _MarketplaceItemCardState extends State<MarketplaceItemCard> {
   @override
   Widget build(BuildContext context) {
     final item = widget.item;
-    return GestureDetector(
+    return InkWell(
       onTap: () {
         if (item.stockLeft == 0) return;
         HapticFeedback.lightImpact();
-        Provider.of<MarketplaceProvider>(context, listen: false).toggleItemSelected(item);
+        context.read<MarketplaceProvider>().toggleItemSelected(item);
       },
+      splashColor: Colors.transparent,
+      highlightColor: Colors.transparent,
       child: Container(
         constraints: const BoxConstraints(maxHeight: 130),
         decoration: BoxDecoration(

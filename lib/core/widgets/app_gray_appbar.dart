@@ -51,25 +51,34 @@ class AppGrayAppBar extends StatelessWidget implements PreferredSizeWidget {
 class _AppDropdownLeading extends StatelessWidget {
   const _AppDropdownLeading();
 
+  void _onButtonPressed() {
+    HapticFeedback.lightImpact();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 20.0),
-      child: Row(
-        children: [
-          Container(
-            width: 50,
-            height: 50,
-            decoration: BoxDecoration(
-              color: backgroundWhite,
-              shape: BoxShape.circle,
-              border: Border.all(color: dividerColor, width: 1),
+      child: InkWell(
+        onTap: () => _onButtonPressed(),
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+        child: Row(
+          children: [
+            Container(
+              width: 50,
+              height: 50,
+              decoration: BoxDecoration(
+                color: backgroundWhite,
+                shape: BoxShape.circle,
+                border: Border.all(color: dividerColor, width: 1),
+              ),
+              alignment: Alignment.center,
+              child: Image.asset("assets/images/company_logo.png", height: 40),
             ),
-            alignment: Alignment.center,
-            child: Image.asset("assets/images/company_logo.png", height: 40),
-          ),
-          Icon(HugeIcons.strokeRoundedArrowDown01, size: 18),
-        ],
+            Icon(HugeIcons.strokeRoundedArrowDown01, size: 18),
+          ],
+        ),
       ),
     );
   }
