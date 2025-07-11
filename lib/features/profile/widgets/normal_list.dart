@@ -16,6 +16,8 @@ class NormalList extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 6),
       child: InkWell(
         onTap: onTap,
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

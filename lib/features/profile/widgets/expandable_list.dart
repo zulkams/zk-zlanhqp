@@ -51,6 +51,8 @@ class _ExpandableListState extends State<ExpandableList> with SingleTickerProvid
                     HapticFeedback.lightImpact();
                     provider.toggle();
                   },
+                  splashColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
