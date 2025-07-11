@@ -38,7 +38,7 @@ class _ClaimRecentContent extends StatelessWidget {
           'My Recent Claims',
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: fontBlack),
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 12),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,

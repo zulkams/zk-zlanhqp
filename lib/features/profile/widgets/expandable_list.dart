@@ -1,22 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hugeicons/hugeicons.dart';
 import 'package:provider/provider.dart';
 import 'package:setgaji/core/constants/app_colors.dart';
-
-class ExpandableListProvider extends ChangeNotifier {
-  bool expanded = false;
-  void toggle() {
-    expanded = !expanded;
-    notifyListeners();
-  }
-}
+import 'package:setgaji/features/profile/providers/expandable_list_provider.dart';
 
 // expandable list
 class ExpandableList extends StatefulWidget {
   final String title;
   final Widget? trailing;
-  final List<Widget> children;
-  const ExpandableList({super.key, required this.title, this.trailing, required this.children});
+  final List<Widget>? children;
+  const ExpandableList({super.key, required this.title, this.trailing, this.children});
 
   @override
   State<ExpandableList> createState() => _ExpandableListState();
@@ -62,7 +56,7 @@ class _ExpandableListState extends State<ExpandableList> with SingleTickerProvid
                     children: [
                       Text(
                         widget.title,
-                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: fontBlue),
+                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: fontBlue),
                       ),
                       Row(
                         children: [
@@ -70,7 +64,7 @@ class _ExpandableListState extends State<ExpandableList> with SingleTickerProvid
                           // rotate chevron
                           RotationTransition(
                             turns: _iconTurns,
-                            child: const Icon(Icons.expand_more, color: primaryColor, size: 28),
+                            child: const Icon(HugeIcons.strokeRoundedArrowDown01, color: primaryColor, size: 28),
                           ),
                         ],
                       ),
@@ -84,7 +78,7 @@ class _ExpandableListState extends State<ExpandableList> with SingleTickerProvid
                   // expanded state
                   secondChild: Padding(
                     padding: const EdgeInsets.only(top: 20.0, bottom: 20.0, left: 4.0, right: 4.0),
-                    child: Column(children: widget.children),
+                    child: Column(children: widget.children ?? const []),
                   ),
                   crossFadeState: provider.expanded ? CrossFadeState.showSecond : CrossFadeState.showFirst,
                   duration: const Duration(milliseconds: 200),
