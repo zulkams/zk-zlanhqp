@@ -23,7 +23,7 @@ class HomeScreen extends StatelessWidget {
       child: Column(
         children: [
           ElevatedButton(onPressed: () => context.push(AppRoute.profileRoute), child: Text("Profile Screen")),
-          ElevatedButton(onPressed: () {}, child: Text("Marketplace Screen")),
+          ElevatedButton(onPressed: () => context.push(AppRoute.marketplaceRoute), child: Text("Marketplace Screen")),
           ElevatedButton(onPressed: () => context.push(AppRoute.claimRoute), child: Text("Claim Screen")),
         ],
       ),
