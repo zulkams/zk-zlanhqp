@@ -12,7 +12,7 @@ class ClaimRecent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 110,
+      height: 105,
       width: double.infinity,
       decoration: BoxDecoration(
         color: backgroundWhite,

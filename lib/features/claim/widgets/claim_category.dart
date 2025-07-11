@@ -43,11 +43,13 @@ class _ClaimCategoryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: () {
         HapticFeedback.lightImpact();
         context.read<ClaimCategoryProvider>().selectCategory(index);
       },
+      splashColor: Colors.transparent,
+      highlightColor: Colors.transparent,
       child: Container(
         alignment: Alignment.center,
         child: Column(
