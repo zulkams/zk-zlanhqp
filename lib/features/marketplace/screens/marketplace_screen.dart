@@ -52,7 +52,7 @@ class _MarketplaceScreenSubs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+      padding: EdgeInsets.symmetric(horizontal: 24.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -103,7 +103,7 @@ class _MarketplaceScreenBottomArea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+      padding: EdgeInsets.symmetric(horizontal: 24.0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
