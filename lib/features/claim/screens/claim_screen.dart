@@ -19,7 +19,7 @@ class ClaimScreen extends StatelessWidget {
       appBar: AppGrayAppBar(title: 'Claim'),
       body: ChangeNotifierProvider(
         create: (_) => ClaimCategoryProvider(),
-        child: const SafeArea(child: _ClaimScreenContent()),
+        child: SafeArea(child: _ClaimScreenContent()),
       ),
     );
   }
@@ -31,19 +31,19 @@ class _ClaimScreenContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+      padding: EdgeInsets.symmetric(horizontal: 24.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 12),
-          const _ClaimScreenTitle(),
-          const SizedBox(height: 20),
+          SizedBox(height: 12),
+          _ClaimScreenTitle(),
+          SizedBox(height: 20),
           Expanded(
-            child: SingleChildScrollView(physics: const BouncingScrollPhysics(), child: const ClaimCategory()),
+            child: SingleChildScrollView(physics: BouncingScrollPhysics(), child: ClaimCategory()),
           ),
-          const ClaimRecent(),
-          const SizedBox(height: 20),
-          const _ClaimScreenBottomArea(),
+          ClaimRecent(),
+          SizedBox(height: 20),
+          _ClaimScreenBottomArea(),
         ],
       ),
     );
@@ -59,7 +59,7 @@ class _ClaimScreenTitle extends StatelessWidget {
     return Center(
       child: Text(
         'Select category to continue',
-        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: fontBlack),
+        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: fontBlack),
       ),
     );
   }
