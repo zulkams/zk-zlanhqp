@@ -7,6 +7,8 @@ class MemberBenefitsModel {
 
   MemberBenefitsModel({required this.title, required this.icon});
 
+  factory MemberBenefitsModel.fromJson(Map<String, dynamic> json) => MemberBenefitsModel(title: json["title"], icon: json["icon"]);
+
   static List<MemberBenefitsModel> getMemberBenefits() {
     return [
       MemberBenefitsModel(title: "Early Salary\nWithdraw", icon: HugeIcons.strokeRoundedMoney01),
