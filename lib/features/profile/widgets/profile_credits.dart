@@ -18,34 +18,37 @@ class ProfileCredits extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(color: tertiaryColor, borderRadius: BorderRadius.circular(10)),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 10.0),
+        padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 8.0),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Text("Remaining Credit", style: TextStyle(color: fontWhiteFaded, fontSize: 10)),
-                      const SizedBox(width: 5),
-                      Icon(HugeIcons.strokeRoundedHelpCircle, color: fontWhiteFaded, size: 16),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        "RM ",
-                        style: TextStyle(color: fontYellow, fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        isHidden ? "*****" : userProfile.remainingCredit.toStringAsFixed(2),
-                        style: TextStyle(color: fontYellow, fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ],
+              child: Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Text("Remaining Credit", style: TextStyle(color: fontWhiteFaded, fontSize: 10)),
+                        const SizedBox(width: 5),
+                        Icon(HugeIcons.strokeRoundedHelpCircle, color: fontWhiteFaded, size: 16),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          "RM ",
+                          style: TextStyle(color: fontYellow, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          isHidden ? "*****" : userProfile.remainingCredit.toStringAsFixed(2),
+                          style: TextStyle(color: fontYellow, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
             Container(height: 40, width: 1, color: dividerColor),
@@ -53,24 +56,27 @@ class ProfileCredits extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text("Monthly Credit Limit", style: TextStyle(color: fontWhiteFaded, fontSize: 10)),
-                      Row(
-                        children: [
-                          Text(
-                            "RM ",
-                            style: TextStyle(color: fontYellow, fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            isHidden ? "*****" : userProfile.creditLimit.toStringAsFixed(2),
-                            style: TextStyle(color: fontYellow, fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                    ],
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text("Monthly Credit Limit", style: TextStyle(color: fontWhiteFaded, fontSize: 10)),
+                        Row(
+                          children: [
+                            Text(
+                              "RM ",
+                              style: TextStyle(color: fontYellow, fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              isHidden ? "*****" : userProfile.creditLimit.toStringAsFixed(2),
+                              style: TextStyle(color: fontYellow, fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                   Consumer<CreditVisibilityProvider>(
                     builder: (context, provider, _) => IconButton(
