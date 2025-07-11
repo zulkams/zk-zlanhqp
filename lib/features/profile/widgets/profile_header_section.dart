@@ -48,9 +48,14 @@ class _ProfileHeaderTopSection extends StatelessWidget {
               HapticFeedback.lightImpact();
               context.pop();
             },
-            icon: const Icon(HugeIcons.strokeRoundedCancel01, color: fontWhite, size: 30),
+            icon: const Icon(HugeIcons.strokeRoundedCancel01, color: fontWhite, size: 25),
           ),
-          const Icon(HugeIcons.strokeRoundedSettings01, color: fontWhite, size: 30),
+          IconButton(
+            onPressed: () {
+              HapticFeedback.lightImpact();
+            },
+            icon: const Icon(HugeIcons.strokeRoundedSettings01, color: fontWhite, size: 25),
+          ),
         ],
       ),
     );

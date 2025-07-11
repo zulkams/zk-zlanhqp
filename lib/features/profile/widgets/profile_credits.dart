@@ -18,64 +18,69 @@ class ProfileCredits extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 10.0),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Text("Remaining Credit", style: TextStyle(color: fontWhiteFaded, fontSize: 10)),
-                    const SizedBox(width: 5),
-                    Icon(HugeIcons.strokeRoundedHelpCircle, color: fontWhiteFaded, size: 16),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Text(
-                      "RM ",
-                      style: TextStyle(color: fontYellow, fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      isHidden ? "*****" : "50.00",
-                      style: TextStyle(color: fontYellow, fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            // vertical line
-            Container(height: 40, width: 1, color: fontWhiteFaded),
-            Row(
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Monthly Credit Limit", style: TextStyle(color: fontWhiteFaded, fontSize: 10)),
-                    Row(
-                      children: [
-                        Text(
-                          "RM ",
-                          style: TextStyle(color: fontYellow, fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          isHidden ? "*****" : "50.00",
-                          style: TextStyle(color: fontYellow, fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                Consumer<CreditVisibilityProvider>(
-                  builder: (context, provider, _) => IconButton(
-                    icon: Icon(provider.isHidden ? HugeIcons.strokeRoundedViewOff : HugeIcons.strokeRoundedView, color: fontWhiteFaded),
-                    onPressed: () {
-                      HapticFeedback.lightImpact();
-                      provider.toggle();
-                    },
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Text("Remaining Credit", style: TextStyle(color: fontWhiteFaded, fontSize: 10)),
+                      const SizedBox(width: 5),
+                      Icon(HugeIcons.strokeRoundedHelpCircle, color: fontWhiteFaded, size: 16),
+                    ],
                   ),
-                ),
-              ],
+                  Row(
+                    children: [
+                      Text(
+                        "RM ",
+                        style: TextStyle(color: fontYellow, fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        isHidden ? "*****" : "50.00",
+                        style: TextStyle(color: fontYellow, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Container(height: 40, width: 1, color: dividerColor),
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text("Monthly Credit Limit", style: TextStyle(color: fontWhiteFaded, fontSize: 10)),
+                      Row(
+                        children: [
+                          Text(
+                            "RM ",
+                            style: TextStyle(color: fontYellow, fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            isHidden ? "*****" : "50.00",
+                            style: TextStyle(color: fontYellow, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  Consumer<CreditVisibilityProvider>(
+                    builder: (context, provider, _) => IconButton(
+                      icon: Icon(provider.isHidden ? HugeIcons.strokeRoundedViewOff : HugeIcons.strokeRoundedView, color: fontWhiteFaded, size: 20),
+                      onPressed: () {
+                        HapticFeedback.lightImpact();
+                        provider.toggle();
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
