@@ -25,6 +25,7 @@ class AppIconButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(16),
           ),
           child: IconButton(
+            splashColor: Colors.transparent,
             highlightColor: Colors.transparent,
             onPressed: onPressed,
             icon: HugeIcon(icon: icon, color: primaryColor, size: iconSize),
